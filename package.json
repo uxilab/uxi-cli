@@ -29,5 +29,40 @@
     "jest-coverage-ratchet": "^0.2.3",
     "nock": "^9.0.13",
     "shelljs": "^0.7.8"
+  },
+  "jest": {
+    "setupFiles": [
+      "./shim.js",
+      "./jest.conf.js"
+    ],
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "mock/*",
+      "<rootDir>/node_modules/*",
+      "<rootDir>/test/*"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/lodash",
+      "<rootDir>/node_modules/testcafe"
+    ],
+    "globals": {
+      "__cluedIn": {
+        "token": "oefkeofkeofkeofk"
+      }
+    },
+    "coverageReporters": [
+      "json-summary"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 53.48,
+        "statements": 52.8,
+        "functions": 46.24,
+        "branches": 27.58
+      }
+    }
   }
 }
