@@ -27,11 +27,9 @@ exec('npm root', function (err, stdout, stderr) {
     `${command} ${args}`,
     { cwd: rootCWD },
     function (err, stdout, stderr) {
-      if (err) {
-        console.warn(err)
-        throw new Error(err)
-      }
-      console.warn(stderr)
+      if (err) { console.warn(err) }
+      if (stderr) { console.warn(stderr) }
+      console.log(stdout)
       process.exit(0)
     });
   cmd.stdout.pipe(process.stdout)
