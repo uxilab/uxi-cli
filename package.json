@@ -1,0 +1,32 @@
+{
+  "name": "ci-ops",
+  "version": "1.0.0",
+  "description": "WIP",
+  "main": "bin/index.js",
+  "bin": {
+    "ci-ops": "bin/index.js"
+  },
+  "scripts": {
+    "test": "jest --",
+    "test:watch": "jest --watch --",
+    "test:coverage": "jest --coverage --"
+  },
+  "author": "denisflorkin@gmail.com",
+  "license": "MIT",
+  "@std/esm": {
+    "esm": "js",
+    "cjs": true
+  },
+  "dependencies": {
+    "@std/esm": "^0.15.0",
+    "babel-eslint": "^7.2.2",
+    "babel-jest": "^21.2.0",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
+    "enzyme-to-json": "^3.2.2",
+    "jest": "^21.2.1",
+    "jest-coverage-ratchet": "^0.2.3",
+    "nock": "^9.0.13",
+    "shelljs": "^0.7.8"
+  }
+}
