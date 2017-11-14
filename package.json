@@ -2,11 +2,12 @@
   "name": "ci-ops",
   "version": "1.0.2",
   "description": "WIP",
-  "main": "bin/main.js",
+  "main": "bin/index.js",
   "bin": {
     "ci-ops": "bin/index.js"
   },
   "scripts": {
+    "testtest": "echo testtest",
     "test": "jest --",
     "test:watch": "jest --watch --",
     "test:coverage": "jest --coverage --"
