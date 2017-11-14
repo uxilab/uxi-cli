@@ -1,6 +1,10 @@
 #! /usr/bin/env node
-import shell from 'shelljs'
+const exec = require('process').child_process
 
 const command = process.argv[3]
 
-shell.exec(`npm run ${command}`);
+console.log(process.cwd())
+
+exec('npm run ' + command, function () {
+
+});
