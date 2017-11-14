@@ -1,11 +1,10 @@
 #! /usr/bin/env node
 const exec = require('child_process').exec
 const path = require('path')
+const pkg = require('./package.json')
 
+const cmds = pkg.commands
 
-const cmds = {
-  test: 'node_modules/.bin/jest'
-}
 const commandArg = process.argv[2]
 const command = cmds[commandArg]
 if (!command) {
@@ -18,16 +17,12 @@ console.log('cwd :', process.cwd())
 console.log('running' + command)
 
 exec('npm root', function (err, stdout, stderr) {
-  if (err) {
-    console.warn(err)
-    throw new Error(err)
-  }
+  if (err) { throw new Error(err) }
 
   const rootCWD = path.resolve(stdout, '../')
-  console.log(`${command} ${args}`, 'running in', rootCWD)
-  console.log('rootCWD :', rootCWD)
+  // console.log(`${command} ${args}`, 'running in', rootCWD)
+  // console.log('rootCWD :', rootCWD)
 
-  // $(npm root)
   const cmd = exec(
     `${command} ${args}`,
     { cwd: rootCWD },

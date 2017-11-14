@@ -6,12 +6,11 @@
   "bin": {
     "ci-ops": "bin/index.js"
   },
-  "scripts": {
-    "testtest": "echo testtest",
-    "test": "jest --",
-    "test:watch": "jest --watch --",
-    "test:coverage": "jest --coverage --"
+  "commands": {
+    "test": "node_modules/.bin/jest",
+    "lint": "node_modules/.bin/eslint"
   },
+  "scripts": {},
   "author": "denisflorkin@gmail.com",
   "license": "MIT",
   "@std/esm": {
@@ -20,7 +19,6 @@
   },
   "dependencies": {
     "@std/esm": "^0.15.0",
-    "babel-eslint": "^7.2.2",
     "babel-jest": "^21.2.0",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
@@ -28,7 +26,13 @@
     "jest": "^21.2.1",
     "jest-coverage-ratchet": "^0.2.3",
     "nock": "^9.0.13",
-    "shelljs": "^0.7.8"
+    "shelljs": "^0.7.8",
+    "babel-eslint": "^7.2.2",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
   },
   "jest": {
     "setupFiles": [
