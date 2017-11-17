@@ -13,7 +13,7 @@
     "lint": "node_modules/.bin/eslint -c 'node_modules/ci-ops/.eslintrc' "
   },
   "scripts": {
-    "deploy": "npm run version patch && npm run publish"
+    "deploy": "npm version patch && npm run publish"
   },
   "author": "denisflorkin@gmail.com",
   "license": "MIT",
