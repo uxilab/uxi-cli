@@ -12,7 +12,9 @@
     "test:coverage": "node_modules/.bin/jest --coverage",
     "lint": "node_modules/.bin/eslint -c 'node_modules/ci-ops/.eslintrc' "
   },
-  "scripts": {},
+  "scripts": {
+    "deploy": "npm run version patch && npm run publish"
+  },
   "author": "denisflorkin@gmail.com",
   "license": "MIT",
   "@std/esm": {
