@@ -1,6 +1,6 @@
 {
   "name": "ci-ops",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "WIP",
   "main": "bin/index.js",
   "bin": {
