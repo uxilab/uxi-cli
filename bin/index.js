@@ -2,6 +2,9 @@
 const exec = require('child_process').exec;
 const path = require('path');
 const pkg = require('../package.json');
+const readline = require('readline')
+;
+process.stdin.setEncoding('utf8');
 
 const cmds = pkg.commands;
 
@@ -12,9 +15,22 @@ if (!command) {
 }
 const args = [...process.argv].slice(3).join(' ');
 
-console.log([...process.argv]);
-console.log('cwd :', process.cwd());
-console.log(`running${command}`);
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: 'OHAI> ',
+
+});
+rl.prompt();
+rl.on('line', (input) => {
+  console.log(`Received: ${input}`);
+});
+
+
+// console.log([...process.argv]);
+// console.log('cwd :', process.cwd());
+// console.log(`running${command}`);
 
 exec('npm root', (err, stdout, stderr) => {
   if (err) { throw new Error(err); }
@@ -32,7 +48,34 @@ exec('npm root', (err, stdout, stderr) => {
       console.log(stdout);
       process.exit(0);
     });
+
+  // const rl = readline.createInterface({
+  //   input: cmd.stdin,
+  //   output: cmd.stdin,
+  //   prompt: 'OHAI> '
+
+  // });
+  // rl.prompt();
+  // rl.on('line', (input) => {
+  //   console.log(`Received: ${input}`);
+  // });
+
+  const stdin = process.openStdin();
+  stdin.addListener('data', (d) => {
+    console.log('user iinput', d);
+    cmd.stdin.pipe(stdin);
+  });
+  const cmdStdin = process.openStdin();
+
+  cmd.on('close', (code) => {
+    console.log(`child process exited with code ${code}`);
+  });
+
+  cmd.on('data', (code) => {
+    console.log(`child process exited with code ${code}`);
+  });
+
   cmd.stdout.pipe(process.stdout);
   cmd.stderr.pipe(process.stderr);
-  cmd.stdin.pipe(process.stdin);
+  // cmd.stdin.pipe(process.stdin);
 });
