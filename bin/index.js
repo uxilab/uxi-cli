@@ -1,9 +1,10 @@
 #! /usr/bin/env node
 const exec = require('child_process').exec;
 const path = require('path');
+// const npmRun = require('npm-run');
 const pkg = require('../package.json');
-const readline = require('readline')
-;
+// const readline = require('readline')
+
 process.stdin.setEncoding('utf8');
 
 const cmds = pkg.commands;
@@ -11,11 +12,15 @@ const cmds = pkg.commands;
 const commandArg = process.argv[2];
 const command = cmds[commandArg];
 if (!command) {
-  throw new Error(`command not supported "${commandArg}"`);
+  console.log(`command not supported "${commandArg === undefined ? '' : commandArg}"
+
+  List of available commands:
+${Object.keys(cmds).map(c => `  - ci-ops ${c}`).join('\n')}
+`);
 }
 const args = [...process.argv].slice(3).join(' ');
 
-
+/*
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -26,7 +31,7 @@ rl.prompt();
 rl.on('line', (input) => {
   console.log(`Received: ${input}`);
 });
-
+*/
 
 // console.log([...process.argv]);
 // console.log('cwd :', process.cwd());
