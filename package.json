@@ -91,5 +91,8 @@
         "branches": 27.58
       }
     }
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.3"
   }
 }
