@@ -21,7 +21,8 @@
     "build": "[<sourceFilePath> <targetFilePath>]"
   },
   "scripts": {
-    "deploy": "npm version patch && npm publish"
+    "deploy": "npm version patch && npm publish",
+    "build": "webpack"
   },
   "author": "denisflorkin@gmail.com",
   "license": "MIT",

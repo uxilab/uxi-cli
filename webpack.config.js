@@ -4,6 +4,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const pgk = require('./package.json');
 
 module.exports = {
+  mode: 'production',
   entry: [
     'babel-polyfill',
     './src/index.js',
@@ -45,6 +46,7 @@ module.exports = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    /*
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
       sourceMap: true,
@@ -61,6 +63,7 @@ module.exports = {
       },
       exclude: [/\.min\.js$/gi], // skip pre-minified libs
     }),
+    */
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/), // https://stackoverflow.com/questions/25384360/how-to-prevent-moment-js-from-loading-locales-with-webpack
     new CompressionPlugin({
       asset: '[path].gz[query]',
