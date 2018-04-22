@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const transformObjectRestSpread = require('transform-object-rest-spread')
+;
 
 module.exports = {
   mode: 'development',
   entry: [
-    'babel-polyfill',
+    // 'babel-polyfill',
     'react-hot-loader/patch',
     // activate HMR for React
 
@@ -39,7 +41,8 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            // plugins: [require('@babel/plugin-proposal-object-rest-spread')],
+            // plugins: [transformObjectRestSpread],
+            plugins: ['transform-object-rest-spread'],
           },
         },
       },

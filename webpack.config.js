@@ -21,9 +21,14 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        // use: [
-        //   'babel-loader',
-        // ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+            // plugins: [transformObjectRestSpread],
+            plugins: ['transform-object-rest-spread'],
+          },
+        },
         exclude: /node_modules/,
       },
       // {
