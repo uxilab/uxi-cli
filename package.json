@@ -15,13 +15,14 @@
     "build:react": "node_modules/.bin/webpack --config node_modules/ci-ops/webpack.react.config.js",
     "dev": "node_modules/.bin/webpack-dev-server --config node_modules/ci-ops/webpack.dev.config.js --port 3100"
   },
-  "commands-args": {
+  "commandsArgs": {
     "test": "[<targetPath>]",
     "test:watch": "[<targetPath>]",
     "test:coverage": "[<targetPath>]",
     "lint": "[<targetPath>]",
     "build": "[<...webpack cli args>]",
-    "build:react": "[<...webpack cli args>]"
+    "build:react": "[<...webpack cli args>]",
+    "dev": "[<...webpack cli args>]"
   },
   "scripts": {
     "deploy": "npm version patch && npm publish",
@@ -61,28 +62,18 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0"
   },
   "jest": {
-    "setupFiles": [
-      "./shim.js",
-      "./jest.conf.js"
-    ],
+    "setupFiles": [],
     "verbose": true,
     "testPathIgnorePatterns": [
       "mock/*",
-      "<rootDir>/node_modules/*",
-      "<rootDir>/test/*"
+      "<rootDir>/node_modules/*"
     ],
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils",
-      "<rootDir>/node_modules/lodash",
-      "<rootDir>/node_modules/testcafe"
+      "<rootDir>/node_modules/react-addons-test-utils"
     ],
-    "globals": {
-      "__cluedIn": {
-        "token": "oefkeofkeofkeofk"
-      }
-    },
+    "globals": {},
     "coverageReporters": [
       "json-summary"
     ],
