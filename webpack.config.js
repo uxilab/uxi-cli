@@ -6,7 +6,7 @@ const pgk = require('./package.json');
 module.exports = {
   mode: 'production',
   entry: [
-    'babel-polyfill',
+    // 'babel-polyfill',
     './src/index.js',
   ],
   output: {
@@ -20,23 +20,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: [
-          'babel-loader',
-        ],
+        test: /\.js$/,
+        // use: [
+        //   'babel-loader',
+        // ],
         exclude: /node_modules/,
       },
-      {
-        test: /\.jsx?$/,
-        use: [
-          'babel-loader',
-        ],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
+      // {
+      //   test: /\.jsx?$/,
+      //   use: [
+      //     'babel-loader',
+      //   ],
+      //   exclude: /node_modules/,
+      // },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader'],
+      // },
     ],
   },
   plugins: [
