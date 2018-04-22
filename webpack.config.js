@@ -15,7 +15,7 @@ module.exports = {
   },
   devtool: 'nosources-source-map',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
   },
   module: {
     rules: [

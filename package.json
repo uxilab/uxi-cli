@@ -24,7 +24,7 @@
   },
   "scripts": {
     "deploy": "npm version patch && npm publish",
-    "build": "webpack"
+    "build:react": "webpack --config webpack.react.config.js"
   },
   "author": "denisflorkin@gmail.com",
   "license": "MIT",
