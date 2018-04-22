@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
@@ -34,9 +35,13 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          'babel-loader',
-        ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react'],
+            // plugins: [require('@babel/plugin-proposal-object-rest-spread')],
+          },
+        },
       },
       // {
       //   test: /\.jsx?$/,

@@ -53,6 +53,7 @@
     "jest": "^21.2.1",
     "jest-coverage-ratchet": "^0.2.3",
     "nock": "^9.0.13",
+    "react-hot-loader": "^4.1.1",
     "shelljs": "^0.7.8",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15",
