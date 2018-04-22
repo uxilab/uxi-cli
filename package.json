@@ -1,6 +1,6 @@
 {
   "name": "ci-ops",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "WIP",
   "main": "bin/index.js",
   "bin": {
@@ -19,7 +19,8 @@
     "test:watch": "[<targetPath>]",
     "test:coverage": "[<targetPath>]",
     "lint": "[<targetPath>]",
-    "build": "[<sourceFilePath> <targetFilePath>]"
+    "build": "[<...webpack cli args>]",
+    "build:react": "[<...webpack cli args>]"
   },
   "scripts": {
     "deploy": "npm version patch && npm publish",
