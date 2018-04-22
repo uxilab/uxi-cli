@@ -12,7 +12,8 @@
     "test:coverage": "node_modules/.bin/jest --coverage",
     "lint": "node_modules/.bin/eslint -c 'node_modules/ci-ops/.eslintrc' ",
     "build": "node_modules/.bin/webpack --config node_modules/ci-ops/webpack.config.js",
-    "build:react": "node_modules/.bin/webpack --config node_modules/ci-ops/webpack.react.config.js"
+    "build:react": "node_modules/.bin/webpack --config node_modules/ci-ops/webpack.react.config.js",
+    "dev": "node_modules/.bin/webpack-dev-server --config webpack.dev.config.js --port 3100"
   },
   "commands-args": {
     "test": "[<targetPath>]",
