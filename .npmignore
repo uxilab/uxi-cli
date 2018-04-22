@@ -20,3 +20,8 @@ coverage
 
 # FORCE :
 !.eslintrc
+
+
+
+scr/
+build/
