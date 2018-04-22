@@ -11,7 +11,7 @@
     "test:watch": "node_modules/.bin/jest --watchAll",
     "test:coverage": "node_modules/.bin/jest --coverage",
     "lint": "node_modules/.bin/eslint -c 'node_modules/ci-ops/.eslintrc' ",
-    "build": "node_modules/.bin/webpack "
+    "build": "node_modules/.bin/webpack --config node_modules/ci-ops/webpack.config.js"
   },
   "commands-args": {
     "test": "[<targetPath>]",
