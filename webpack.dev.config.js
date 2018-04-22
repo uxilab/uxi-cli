@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const transformObjectRestSpread = require('transform-object-rest-spread')
-;
+// const transformObjectRestSpread = require('transform-object-rest-spread')
+
 
 module.exports = {
   mode: 'development',
@@ -28,7 +28,7 @@ module.exports = {
     },
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'build'),
     filename: 'app.js',
   },
   devtool: 'eval',

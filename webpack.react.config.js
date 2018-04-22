@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
-const pgk = require('./package.json');
+// const pgk = require('./package.json');
 
 module.exports = {
   mode: 'production',
