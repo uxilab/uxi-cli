@@ -30,7 +30,7 @@ exec('npm root', (err, stdout/* , stderr */) => {
   const rootCWD = path.resolve(stdout, '../');
   const cmd = exec(
     `${command} ${args}`,
-    { cwd: rootCWD, stdio: inherit },
+    { cwd: rootCWD, stdio: 'inherit' },
     (err, stdout, stderr) => {
       if (err) { console.warn(err); }
       if (stderr) { console.warn(stderr); }
