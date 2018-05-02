@@ -2,9 +2,13 @@
   "name": "uxi-cli",
   "version": "1.0.37",
   "description": "WIP",
+  "homepage": "https://github.com/uxilab/uxi-cli",
   "main": "bin/index.js",
   "bin": {
     "ci-ops": "bin/index.js"
+  },
+  "scripts": {
+    "deploy": "npm version patch && npm publish"
   },
   "commands": {
     "test": "node_modules/.bin/jest",
@@ -23,9 +27,6 @@
     "build": "[<...webpack cli args>]",
     "build:react": "[<...webpack cli args>]",
     "dev": "[<...webpack cli args>]"
-  },
-  "scripts": {
-    "deploy": "npm version patch && npm publish"
   },
   "author": "denisflorkin@gmail.com",
   "license": "MIT",

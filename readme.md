@@ -1,4 +1,4 @@
-# ci-ops
+# uxi-cli
 
 jest + eslint + webpack + babel + webpack-dev-server
 
