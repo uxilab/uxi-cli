@@ -5,7 +5,9 @@
   "homepage": "https://github.com/uxilab/uxi-cli",
   "main": "bin/index.js",
   "bin": {
-    "ci-ops": "bin/index.js"
+    "ci-ops": "bin/index.js",
+    "uxi-cli": "bin/index.js",
+    "uxi": "bin/index.js"
   },
   "scripts": {
     "deploy": "npm version patch && npm publish"

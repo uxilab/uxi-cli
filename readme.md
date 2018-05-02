@@ -12,11 +12,11 @@ jest + eslint + webpack + babel + webpack-dev-server
     - object spread
 
 ## install:
-- npm i ci-ops
+- npm i uxi-cli
 
 print help:
 
-`$ node_modules/.bin/ci-ops`:
+`$ node_modules/.bin/uxi-cli`:
 
 
 ## Usage:
@@ -24,9 +24,9 @@ print help:
 in the package.json:
 ```JSON
   "scripts": {
-    "build": "ci-ops build",
-    "lint": "ci-ops lint",
-    "test": "ci-ops test",
+    "build": "uxi-cli build",
+    "lint": "uxi-cli lint",
+    "test": "uxi-cli test",
   }
 ```
 
@@ -46,7 +46,7 @@ in the package.json:
 
 - **test** and **lint** default to targeting ./src folder, but you can say ortherwise by passing the path as the first argument:
 
-  `$ ci-ops lint ./myFolder` or `$ ci-ops test ./source`
+  `$ uxi-cli lint ./myFolder` or `$ uxi-cli test ./source`
 
 - **build** defaults to using ./src/index.js as source and .build/app.js as output
 
@@ -70,4 +70,4 @@ in the package.json:
 
     then use the config,
 
-    `$ ci-ops build --config webpack.myconf.js`
+    `$ uxi-cli build --config webpack.myconf.js`
