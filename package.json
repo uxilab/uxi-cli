@@ -13,13 +13,13 @@
     "deploy": "npm version patch && npm publish"
   },
   "commands": {
-    "test": "node_modules/.bin/jest",
-    "test:watch": "node_modules/.bin/jest --watchAll",
-    "test:coverage": "node_modules/.bin/jest --coverage",
-    "lint": "node_modules/.bin/eslint -c 'node_modules/uxi-cli/.eslintrc' ",
-    "build": "node_modules/.bin/webpack --config node_modules/uxi-cli/webpack.config.js",
-    "build:react": "node_modules/.bin/webpack --config node_modules/uxi-cli/webpack.react.config.js",
-    "dev": "node_modules/.bin/webpack-dev-server --config node_modules/uxi-cli/webpack.dev.config.js --port 3100"
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint -c 'node_modules/uxi-cli/.eslintrc' ",
+    "build": "webpack --config node_modules/uxi-cli/webpack.config.js",
+    "build:react": "webpack --config node_modules/uxi-cli/webpack.react.config.js",
+    "dev": "webpack-dev-server --config node_modules/uxi-cli/webpack.dev.config.js --port 3100"
   },
   "commandsArgs": {
     "test": "[<targetPath>]",

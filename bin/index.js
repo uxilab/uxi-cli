@@ -1,7 +1,7 @@
 #! /usr/bin/env node
-const exec = require('child_process').exec;
+// const exec = require('child_process').exec;
 const path = require('path');
-// const npmRun = require('npm-run');
+const npmRun = require('npm-run');
 const pkg = require('../package.json');
 
 process.stdin.setEncoding('utf8');
@@ -24,11 +24,11 @@ ${Object.keys(cmds).map((c, i) =>
 }
 const args = [...process.argv].slice(3).join(' ');
 
-exec('npm root', (err, stdout/* , stderr */) => {
+npmRun.exec('npm root', (err, stdout/* , stderr */) => {
   if (err) { throw new Error(err); }
 
   const rootCWD = path.resolve(stdout, '../');
-  const cmd = exec(
+  const cmd = npmRun.exec(
     `${command} ${args}`,
     { cwd: rootCWD, stdio: 'inherit' },
     (err, stdout, stderr) => {
