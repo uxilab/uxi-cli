@@ -71,3 +71,8 @@ in the package.json:
     then use the config,
 
     `$ uxi-cli build --config webpack.myconf.js`
+
+
+## Webpack dev-server:
+  - create an index.html at the root of the project to be used by dev-server
+  - webpack-dev-server contentBase default is '/'
