@@ -1,5 +1,5 @@
 {
-  "name": "ci-ops",
+  "name": "uxi-cli",
   "version": "1.0.35",
   "description": "WIP",
   "main": "bin/index.js",
