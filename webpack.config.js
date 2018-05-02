@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 
+const cwd = process.cwd();
 module.exports = {
   mode: 'production',
   entry: [
@@ -9,7 +10,7 @@ module.exports = {
     './src/index.js',
   ],
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(cwd, 'build'),
     filename: 'app.js',
   },
   devtool: 'nosources-source-map',
