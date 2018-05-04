@@ -1,10 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
 // const transformObjectRestSpread = require('transform-object-rest-spread')
-
+const fs = require('fs');
 const cwd = process.cwd();
+let hook;
 
-module.exports = {
+if (fs.existsSync(path.resolve(cwd, './webconfig.extend.js'))) {
+    // Do something
+    hook = require(path.resolve(cwd, './webconfig.extend.js'));
+}
+
+const devConfig =  {
   mode: 'development',
   entry: [
     // 'babel-polyfill',
@@ -41,24 +47,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react'],
-            // plugins: [transformObjectRestSpread],
+            presets: [
+              'env',
+              'react',
+              'stage-0'
+            ],
             plugins: ['transform-object-rest-spread'],
           },
         },
       },
-      // {
-      //   test: /\.jsx?$/,
-      //   use: [
-      //     'babel-loader',
-      //   ],
-      //   exclude: /node_modules/,
-      // },
-      // This loader seems to be there exclusively for graphiQL:
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader'],
-      // },
     ],
   },
   resolve: {
@@ -70,3 +67,5 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
+
+module.exports = hook ? hook(devConfig) : devConfig;
