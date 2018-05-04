@@ -3,10 +3,23 @@ const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 const cwd = process.cwd();
-module.exports = {
+let hook;
+
+if (fs.existsSync(path.resolve(cwd, './index.html'))) {
+  // Do something
+  HTMLWebpackPluginOptions = {
+    template: path.resolve(cwd, './index.html'),
+  };
+}
+
+if (fs.existsSync(path.resolve(cwd, './uxi.extend.js'))) {
+    // Do something
+    hook = require(path.resolve(cwd, './uxi.extend.js'));
+}
+
+const prodConfig = {
   mode: 'production',
   entry: [
-    // 'babel-polyfill',
     './src/index.js',
   ],
   output: {
@@ -25,23 +38,11 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env'],
-            // plugins: [transformObjectRestSpread],
             plugins: ['transform-object-rest-spread'],
           },
         },
         exclude: /node_modules/,
       },
-      // {
-      //   test: /\.jsx?$/,
-      //   use: [
-      //     'babel-loader',
-      //   ],
-      //   exclude: /node_modules/,
-      // },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader'],
-      // },
     ],
   },
   plugins: [
@@ -51,24 +52,6 @@ module.exports = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    /*
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      sourceMap: true,
-      compress: {
-        drop_console: false, // keep logs for debug !!! remove me!
-        warnings: false, // Suppress uglification warnings
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        screw_ie8: true,
-      },
-      output: {
-        comments: false,
-      },
-      exclude: [/\.min\.js$/gi], // skip pre-minified libs
-    }),
-    */
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/), // https://stackoverflow.com/questions/25384360/how-to-prevent-moment-js-from-loading-locales-with-webpack
     new CompressionPlugin({
       asset: '[path].gz[query]',
@@ -79,3 +62,5 @@ module.exports = {
     }),
   ],
 };
+
+module.exports = hook ? hook(prodConfig) : prodConfig;

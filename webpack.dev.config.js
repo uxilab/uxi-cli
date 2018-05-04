@@ -1,13 +1,22 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const transformObjectRestSpread = require('transform-object-rest-spread')
 const fs = require('fs');
 const cwd = process.cwd();
 let hook;
+let HTMLWebpackPluginOptions;
 
-if (fs.existsSync(path.resolve(cwd, './webconfig.extend.js'))) {
+if (fs.existsSync(path.resolve(cwd, './index.html'))) {
+  // Do something
+  HTMLWebpackPluginOptions = {
+    template: path.resolve(cwd, './index.html'),
+  };
+}
+
+if (fs.existsSync(path.resolve(cwd, './uxi.dev.extend.js'))) {
     // Do something
-    hook = require(path.resolve(cwd, './webconfig.extend.js'));
+    hook = require(path.resolve(cwd, './uxi.dev.extend.js'));
 }
 
 const devConfig =  {
@@ -47,6 +56,7 @@ const devConfig =  {
         use: {
           loader: 'babel-loader',
           options: {
+            babelrc: false,
             presets: [
               'env',
               'react',
@@ -65,6 +75,7 @@ const devConfig =  {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin(),
   ],
 };
 
