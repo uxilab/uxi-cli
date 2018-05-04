@@ -8,7 +8,7 @@ const cwd = process.cwd();
 let hook;
 let HTMLWebpackPluginOptions;
 
-if (fs.existsSync(path.resolve(cwd, './index.html'))) {
+if (fs.existsSync(path.resolve(cwd, '/index.html'))) {
   // Do something
   HTMLWebpackPluginOptions = {
     template: path.resolve(cwd, '/index.html'),
