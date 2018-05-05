@@ -1,6 +1,6 @@
 {
   "name": "uxi-cli",
-  "version": "1.0.64",
+  "version": "1.0.65",
   "description": "WIP",
   "homepage": "https://github.com/uxilab/uxi-cli",
   "main": "bin/index.js",
