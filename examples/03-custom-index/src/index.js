@@ -1,4 +1,10 @@
-import RAWReadme from '!raw-loader!./test.md';
+import React from 'react';
+import ReacDOM from 'react-dom';
 
-console.log('YO!');
+const Root = () => (
+  <div>
+    <h1>TEST</h1>
+  </div>
+);
 
+ReacDOM.render(<Root />, document.getElementById('app'));

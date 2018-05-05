@@ -12,6 +12,9 @@
     "uxi-cli": "^1.0.57"
   },
   "dependencies": {
-    "raw-loader": "^0.5.1"
+    "marked": "^0.3.19",
+    "raw-loader": "^0.5.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   }
 }

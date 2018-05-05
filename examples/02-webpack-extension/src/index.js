@@ -1,4 +1,6 @@
-import RAWReadme from '!raw-loader!./test.md';
+import React from 'react';
+import ReacDOM from 'react-dom';
+import RAWReadme from '!raw-loader!./README.md';
+import MarkdownElement from './MarkdownElement';
 
-console.log('YO!');
-
+ReacDOM.render(<MarkdownElement text={RAWReadme} />, document.getElementById('root'));

@@ -6,18 +6,22 @@ const fs = require('fs');
 
 const cwd = process.cwd();
 let hook;
-let HTMLWebpackPluginOptions;
+let templateWebpackPath;
 
 if (fs.existsSync(path.resolve(cwd, '/index.html'))) {
-  // Do something
-  HTMLWebpackPluginOptions = {
-    template: path.resolve(cwd, '/index.html'),
-  };
+  templateWebpackPath = path.join(cwd, '/index.html');
+} else {
+  templateWebpackPath = path.join(cwd, '/node_modules/uxi-cli/index.html');
 }
 
-if (fs.existsSync(path.resolve(cwd, './uxi.dev.extend.js'))) {
-    // Do something
-  hook = require(path.resolve(cwd, './uxi.dev.extend.js'));
+console.log('!!!cwd!!!');
+console.log(cwd);
+
+console.log('!!!templateWebpackPath!!!');
+console.log(templateWebpackPath);
+
+if (fs.existsSync(path.join(cwd, './uxi.dev.extend.js'))) {
+  hook = require(path.join(cwd, './uxi.dev.extend.js'));
 }
 
 const devConfig = {
@@ -76,7 +80,9 @@ const devConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: templateWebpackPath,
+    }),
   ],
 };
 

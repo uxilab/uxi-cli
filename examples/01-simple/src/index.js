@@ -1,4 +1,1 @@
-import RAWReadme from '!raw-loader!./test.md';
-
-console.log('YO!');
-
+console.log('Welcome to uxi-cli');
