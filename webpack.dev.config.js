@@ -8,7 +8,7 @@ const cwd = process.cwd();
 let hook;
 let templateWebpackPath;
 
-if (fs.existsSync(path.resolve(cwd, '/index.html'))) {
+if (fs.existsSync(path.join(cwd, '/index.html'))) {
   templateWebpackPath = path.join(cwd, '/index.html');
 } else {
   templateWebpackPath = path.join(cwd, '/node_modules/uxi-cli/index.html');

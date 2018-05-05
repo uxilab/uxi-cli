@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "uxi-cli": "^1.0.57"
+    "uxi-cli": "^1.0.64"
   },
   "dependencies": {
     "marked": "^0.3.19",
