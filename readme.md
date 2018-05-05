@@ -38,6 +38,7 @@ in the package.json:
   - **build**
   - **build:react**
   - **dev**
+  - **pack**
 
 
 ## Default behaviour:
@@ -76,3 +77,17 @@ in the package.json:
 ## Webpack dev-server:
   - create an index.html at the root of the project to be used by dev-server
   - webpack-dev-server contentBase default is '/'
+
+## uxi-cli dev
+
+This is a pre-packaged webpack configuration to get started quickly with any React application.
+
+Please look at the examples folder to see how you can customize the webpack configuration.
+
+## uxi-cli build
+
+Building your application for a production usage.
+
+## uxi-cli pack
+
+The command `uxi-cli pack` will help you if you want to publish a NPM package. It will build the src folder and will copy the appropriate files that should be present for a valid NPM package (package.json and README.md).
