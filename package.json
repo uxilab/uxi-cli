@@ -19,7 +19,8 @@
     "lint": "eslint -c 'node_modules/uxi-cli/.eslintrc' ",
     "build": "webpack --config node_modules/uxi-cli/webpack.config.js",
     "build:react": "webpack --config node_modules/uxi-cli/webpack.react.config.js",
-    "dev": "webpack-dev-server --config node_modules/uxi-cli/webpack.dev.config.js --port 3100"
+    "dev": "webpack-dev-server --config node_modules/uxi-cli/webpack.dev.config.js --port 3100",
+    "pack": "cross-env NODE_ENV=release babel --no-babelrc ./src --out-dir ./build --presets=env,react,stage-0 --plugins=transform-object-rest-spread,transform-class-properties --ignore '__tests__/**' && babel-node ./node_modules/uxi-cli/scripts/copy-files.js"
   },
   "commandsArgs": {
     "test": "[<targetPath>]",
@@ -28,7 +29,8 @@
     "lint": "[<targetPath>]",
     "build": "[<...webpack cli args>]",
     "build:react": "[<...webpack cli args>]",
-    "dev": "[<...webpack cli args>]"
+    "dev": "[<...webpack cli args>]",
+    "pack": "[<targetPath>]"
   },
   "author": "denisflorkin@gmail.com",
   "license": "MIT",
@@ -38,6 +40,7 @@
   },
   "dependencies": {
     "@std/esm": "^0.15.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^21.2.0",
@@ -48,6 +51,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "compression-webpack-plugin": "^1.1.11",
+    "cross-env": "^5.1.4",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "enzyme-to-json": "^3.2.2",
@@ -56,6 +60,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "fs-extra": "^6.0.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^21.2.1",
     "jest-coverage-ratchet": "^0.2.3",
