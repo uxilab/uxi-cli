@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import path from 'path';
-import fse from 'fs-extra';
+const fse = require('fs-extra');
+const path = require('path');
 
 const cwd = process.cwd();
 
@@ -8,10 +8,10 @@ const files = [
   'README.md',
 ];
 
-Promise.all(
-  files.map(file => copyFile(file)),
-)
-  .then(() => createPackageFile());
+function resolveBuildPath(file) {
+  return path.resolve(cwd, './build/', path.basename(file));
+}
+
 
 function copyFile(file) {
   const buildPath = resolveBuildPath(file);
@@ -28,10 +28,6 @@ function copyFile(file) {
     .then(() => console.log(`Copied ${file} to ${buildPath}`));
 }
 
-function resolveBuildPath(file) {
-  return path.resolve(cwd, './build/', path.basename(file));
-}
-
 function createPackageFile() {
   return new Promise((resolve) => {
     fse.readFile(path.resolve(cwd, './package.json'), 'utf8', (err, data) => {
@@ -44,33 +40,19 @@ function createPackageFile() {
   })
     .then(data => JSON.parse(data))
     .then((packageData) => {
-      const {
-        name,
-        author,
-        version,
-        description,
-        keywords,
-        repository,
-        license,
-        bugs,
-        homepage,
-        peerDependencies,
-        dependencies,
-      } = packageData;
-
       const minimalPackage = {
-        name,
-        author,
-        version,
-        description,
+        name: packageData.name,
+        author: packageData.author,
+        version: packageData.version,
+        description: packageData.description,
         main: './index.js',
-        keywords,
-        repository,
-        license,
-        bugs,
-        homepage,
-        peerDependencies,
-        dependencies,
+        keywords: packageData.keywords,
+        repository: packageData.repository,
+        license: packageData.license,
+        bugs: packageData.bugs,
+        homepage: packageData.homepage,
+        peerDependencies: packageData.peerDependencies,
+        dependencies: packageData.dependencies,
       };
 
       return new Promise((resolve) => {
@@ -84,3 +66,9 @@ function createPackageFile() {
       });
     });
 }
+
+
+Promise.all(
+  files.map(file => copyFile(file)),
+)
+  .then(() => createPackageFile());
