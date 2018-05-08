@@ -37,7 +37,7 @@ const prodConfig = {
   },
   devtool: 'nosources-source-map',
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
