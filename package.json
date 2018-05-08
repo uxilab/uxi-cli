@@ -13,6 +13,7 @@
     "deploy": "npm version patch && npm publish"
   },
   "commands": {
+    "packAndBundle": "npm run pack && npm run build",
     "test": "jest --config node_modules/uxi-cli/jest.config.js",
     "test:watch": "jest  --config node_modules/uxi-cli/jest.config.js --watchAll",
     "test:coverage": "jest --coverage",

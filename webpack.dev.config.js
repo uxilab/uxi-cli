@@ -14,12 +14,6 @@ if (fs.existsSync(path.join(cwd, '/index.html'))) {
   templateWebpackPath = path.join(cwd, '/node_modules/uxi-cli/index.html');
 }
 
-console.log('!!!cwd!!!');
-console.log(cwd);
-
-console.log('!!!templateWebpackPath!!!');
-console.log(templateWebpackPath);
-
 if (fs.existsSync(path.join(cwd, './uxi.dev.extend.js'))) {
   hook = require(path.join(cwd, './uxi.dev.extend.js'));
 }

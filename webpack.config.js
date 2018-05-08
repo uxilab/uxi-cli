@@ -1,21 +1,30 @@
 const webpack = require('webpack');
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
+const fs = require('fs');
 
 const cwd = process.cwd();
 let hook;
 
-if (fs.existsSync(path.resolve(cwd, './index.html'))) {
-  // Do something
-  HTMLWebpackPluginOptions = {
-    template: path.resolve(cwd, './index.html'),
-  };
+let templateWebpackPath;
+
+if (fs.existsSync(path.join(cwd, '/index.html'))) {
+  templateWebpackPath = path.join(cwd, '/index.html');
+} else {
+  templateWebpackPath = path.join(cwd, '/node_modules/uxi-cli/index.html');
 }
 
 if (fs.existsSync(path.resolve(cwd, './uxi.extend.js'))) {
     // Do something
-    hook = require(path.resolve(cwd, './uxi.extend.js'));
+  hook = require(path.resolve(cwd, './uxi.extend.js'));
 }
+
+
+if (!fs.existsSync(path.join(cwd, 'dist'))) {
+  fs.mkdirSync(path.join(cwd, 'dist'));
+}
+
+fs.copyFileSync(templateWebpackPath, path.join(cwd, 'dist/index.html'));
 
 const prodConfig = {
   mode: 'production',
@@ -33,11 +42,16 @@ const prodConfig = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env'],
+            babelrc: false,
+            presets: [
+              'env',
+              'react',
+              'stage-0',
+            ],
             plugins: ['transform-object-rest-spread'],
           },
         },
@@ -49,6 +63,7 @@ const prodConfig = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
       NODE_ENV: JSON.stringify('production'),
+      template: templateWebpackPath,
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
