@@ -32,7 +32,7 @@ const prodConfig = {
     './src/index.js',
   ],
   output: {
-    path: path.join(cwd, 'build'),
+    path: path.join(cwd, 'dist'),
     filename: 'app.js',
   },
   devtool: 'nosources-source-map',
