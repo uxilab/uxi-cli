@@ -26,3 +26,4 @@ coverage
 scr/
 build/
 node_modules/
+examples/
