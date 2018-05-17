@@ -18,6 +18,8 @@ if (fs.existsSync(path.join(cwd, './uxi.dev.extend.js'))) {
   hook = require(path.join(cwd, './uxi.dev.extend.js'));
 }
 
+const PORT = 3100;
+
 const devConfig = {
   mode: 'development',
   entry: [
@@ -25,7 +27,7 @@ const devConfig = {
     'react-hot-loader/patch',
     // activate HMR for React
 
-    'webpack-dev-server/client?http://localhost:3100',
+    `webpack-dev-server/client?http://localhost:${PORT}`,
     // bundle the client for webpack-dev-server
     // and connect to the provided endpoint
 
@@ -35,6 +37,7 @@ const devConfig = {
     './src/index.js',
   ],
   devServer: {
+    port: PORT,
     contentBase: './',
     hot: true,
     disableHostCheck: true,
