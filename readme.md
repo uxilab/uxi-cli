@@ -7,7 +7,7 @@ jest + eslint + webpack + babel + webpack-dev-server
   - webpack 4
   - webpack-dev-server
   - babel, babel-loader:
-    - latest ('env')
+    - latest ('env', 'react', 'stage-0')
     - react jsx
     - object spread
 
@@ -24,9 +24,14 @@ print help:
 in the package.json:
 ```JSON
   "scripts": {
+    "help": "uxi-cli",
+    "dev": "uxi-cli dev",
     "build": "uxi-cli build",
     "lint": "uxi-cli lint",
     "test": "uxi-cli test",
+    "test:coverage": "uxi-cli test:coverage",
+    "test:watch": "uxi-cli test:watch",
+    "pack": "uxi-cli pack",
   }
 ```
 
@@ -36,7 +41,6 @@ in the package.json:
   - **test:coverage**
   - **lint**
   - **build**
-  - **build:react**
   - **dev**
   - **pack**
 
@@ -51,38 +55,59 @@ in the package.json:
 
 - **build** defaults to using ./src/index.js as source and .build/app.js as output
 
-    To overwrire webpack config, or some part of it, create you config file:
-    ```js
-    // webpack.myconf.js
-    const webpack = require('webpack');
-    const path = require('path');
 
-    module.exports = {
-      entry: [
-        './mySrcFolder/myEntryPoint.js',
-      ],
-      output: {
-        path: path.join(__dirname, 'myOutputFolder'),
-        filename: 'myOutputFileName.js',
-      },
-    };
+## Extending config:
 
-    ```
+To overwrire webpack config, or some part of it, for example for the dev command, create a `uxi.dev.extend.js` or a `uxi.build.extend.js` for the build command.
+  uxi-cli will pick up this file if it exists.
 
-    then use the config,
+The file must export, as default, a function.
+This function will be passed the default uxi-cli config for the relevant command.
+You can extend it at this moment and then return it.
 
-    `$ uxi-cli build --config webpack.myconf.js`
+  For instance, here's the extended config for the uxi doc website:
 
+```JS
+const path = require('path');
 
-## Webpack dev-server:
-  - create an index.html at the root of the project to be used by dev-server
-  - webpack-dev-server contentBase default is '/'
+module.exports = (config) => {
+  // here we're ading 'raw-loader' for md files
+  config.module.rules.push({
+    test: /\.md$/,
+    use: 'raw-loader',
+    exclude: /node_modules/,
+  });
+
+  // custom port for dev server:
+  config.devServer.port = 8989;
+  config.entry[1].replace(/(:\d*)$/, ':8989');
+
+  // adding aliases
+  config.resolve.alias = {
+    uxi: path.resolve(__dirname, '../src'),
+    'styled-components': path.resolve(__dirname, 'node_modules/styled-components'),
+    'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+    'react': path.resolve(__dirname, 'node_modules/react'),
+  };
+
+  return config;
+};
+```
 
 ## uxi-cli dev
 
 This is a pre-packaged webpack configuration to get started quickly with any React application.
 
 Please look at the examples folder to see how you can customize the webpack configuration.
+
+  ## Webpack dev-server:
+    - At the root of the project, create an index.html containg a element with an id of `root` for react to attach to be used by dev-server
+      ```HTML
+      <div id="root"></div>
+      ```
+
+    - webpack-dev-server contentBase default is '/'
+    - default port is `3100`
 
 ## uxi-cli build
 
