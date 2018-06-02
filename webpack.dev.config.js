@@ -23,7 +23,7 @@ const PORT = 3100;
 const devConfig = {
   mode: 'development',
   entry: [
-    // 'babel-polyfill',
+    'babel-polyfill',
     'react-hot-loader/patch',
     // activate HMR for React
 

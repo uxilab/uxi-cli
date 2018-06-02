@@ -33,7 +33,7 @@
     "dev": "[<...webpack cli args>]",
     "pack": "[<targetPath>]"
   },
-  "author": "denisflorkin@gmail.com",
+  "author": "denisflorkin@gmail.com, dervalp@gmail.com",
   "license": "MIT",
   "@std/esm": {
     "esm": "js",

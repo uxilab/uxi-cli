@@ -29,6 +29,7 @@ fs.copyFileSync(templateWebpackPath, path.join(cwd, 'dist/index.html'));
 const prodConfig = {
   mode: 'production',
   entry: [
+    'babel-polyfill',
     './src/index.js',
   ],
   output: {

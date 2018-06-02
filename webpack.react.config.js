@@ -7,7 +7,7 @@ const cwd = process.cwd();
 module.exports = {
   mode: 'production',
   entry: [
-    // 'babel-polyfill',
+    'babel-polyfill',
     './src/index.js',
   ],
   output: {
