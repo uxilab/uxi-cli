@@ -3,6 +3,7 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/uxi-cli/jest.transform.js',
   },
   rootDir: '../../',
+  testPathIgnorePatterns: ['node_modules', '__snapshots__'],
   moduleDirectories: [
     'node_modules',
     'src',
