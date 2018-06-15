@@ -32,10 +32,9 @@ npmRun.exec('npm root', (err, stdout/* , stderr */) => {
     `${command} ${args}`,
     { cwd: rootCWD, stdio: 'inherit' },
     (err, stdout, stderr) => {
-      if (err) { console.warn(err); }
+      if (err) { console.error(err); throw new Error(err); process.exit(1) }
       if (stderr) { console.warn(stderr); }
       console.log(stdout);
-      process.exit(0);
     });
 
   const stdin = process.openStdin();
@@ -47,6 +46,7 @@ npmRun.exec('npm root', (err, stdout/* , stderr */) => {
 
   cmd.on('close', (code) => {
     console.log(`child process exited with code ${code}`);
+    process.exit(code)
   });
 
   cmd.on('data', (code) => {
