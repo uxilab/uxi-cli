@@ -11,7 +11,8 @@
   },
   "plugins": [
     "react",
-    "import"
+    "import",
+    "styled-components-config"
   ],
   "extends": "airbnb",
   "rules": {
