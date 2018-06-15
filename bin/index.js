@@ -49,8 +49,8 @@ npmRun.exec('npm root', (err, stdout/* , stderr */) => {
     process.exit(code)
   });
 
-  cmd.on('data', (code) => {
-    console.log(`child process exited with code ${code}`);
+  cmd.on('data', (data) => {
+    console.log(`child send data: ${data}`);
   });
 
   cmd.stdout.pipe(process.stdout);
