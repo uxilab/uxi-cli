@@ -16,7 +16,6 @@
   ],
   "extends": "airbnb",
   "rules": {
-    "import/no-extraneous-dependencies": ["error"],
     "indent": [
       2,
       2,
@@ -77,6 +76,12 @@
         "allow": [
           "__cluedIn"
         ]
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
       }
     ]
   }
