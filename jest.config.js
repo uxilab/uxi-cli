@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    '^.+\\.js$': '<rootDir>/node_modules/uxi-cli/jest.transform.js',
+    '^.+\\.jsx?$': '<rootDir>/node_modules/uxi-cli/jest.transform.js',
   },
   rootDir: '../../',
   testPathIgnorePatterns: ['node_modules', '__snapshots__'],
